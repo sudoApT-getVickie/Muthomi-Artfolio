@@ -1,35 +1,44 @@
 import './BentoHero.css'; // Links the custom CSS
 
+ 
+// Mapped to professional use cases and competencies (we all know HR won't go through all of this, or will they ^.^).
 const techStacks = [
-  { name: 'Adobe AI', icon: '/icons/AdobeAI.svg' },
-  { name: 'Android', icon: '/icons/AndroidStudio.svg' },
-  { name: 'Angular', icon: '/icons/Angular.svg' },
-  { name: 'AWS', icon: '/icons/AWS.svg' },
-  { name: 'Big Data', icon: '/icons/BigData.svg' },
-  { name: 'C', icon: '/icons/C.svg' },
-  { name: 'Cisco', icon: '/icons/Cisco.svg' },
-  { name: 'C++', icon: '/icons/Cplus.svg' },
-  { name: 'CSS3', icon: '/icons/CSS.svg' },
-  { name: 'Security', icon: '/icons/CyberSecurity.svg' },
-  { name: 'Vercel', icon: '/icons/Vercel.svg' },
-  { name: 'Google Cloud', icon: '/icons/Google Cloud.svg' },
-  { name: 'Flutter', icon: '/icons/Flutter.svg' },
-  { name: 'GIMP', icon: '/icons/GIMP.svg' },
-  { name: 'PHP', icon: '/icons/PHP.svg' },
-  { name: 'Git', icon: '/icons/Git.svg' },
-  { name: 'Machine Learning', icon: '/icons/MachineLearning.svg' },
-  { name: 'TensorFlow', icon: '/icons/Tensorflow.svg' },
-  { name: 'PyTorch', icon: '/icons/Pytorch.svg' },
-  { name: 'MetaMask', icon: '/icons/Metamask.svg' },
-  { name: 'Ethereum', icon: '/icons/ethereum.svg' },
-  { name: 'Solidity', icon: '/icons/Solidity.svg' },
-  { name: 'Python', icon: '/icons/Python.svg' },
-  { name: 'UX', icon: '/icons/UX.svg' },
-  { name: 'UI', icon: '/icons/UI.svg' },
-  { name: 'JavaScript', icon: '/icons/JavaScript.svg' },
-  { name: 'HTML', icon: '/icons/Html.svg' },
-  { name: 'React', icon: '/icons/React.svg' },
-  { name: 'Java', icon: '/icons/Java.svg' }
+  // Original Base Code
+  { name: 'Graphic Design', icon: '/icons/AdobeAI.svg' },
+  { name: 'Mobile Development', icon: '/icons/AndroidStudio.svg' },
+  { name: 'Frontend Architecture', icon: '/icons/Angular.svg' },
+  { name: 'Cloud Infrastructure', icon: '/icons/AWS.svg' },
+  { name: 'Data Engineering', icon: '/icons/BigData.svg' },
+  { name: 'Systems Programming', icon: '/icons/C.svg' },
+  { name: 'Network Engineering', icon: '/icons/Cisco.svg' },
+  { name: 'High-Performance Dev', icon: '/icons/Cplus.svg' },
+  { name: 'UI Styling', icon: '/icons/CSS.svg' },
+  { name: 'Threat Mitigation', icon: '/icons/CyberSecurity.svg' }, // Or just 'Cybersecurity'
+  
+  // Folder 1 Additions
+  { name: 'CI/CD & Deployment', icon: '/icons/Vercel.svg' },
+  { name: 'Cloud Architecture', icon: '/icons/Google Cloud.svg' },
+  { name: 'Cross-Platform Mobile', icon: '/icons/Flutter.svg' },
+  { name: 'Raster Graphics', icon: '/icons/GIMP.svg' },
+  { name: 'Server-Side Scripting', icon: '/icons/PHP.svg' },
+  { name: 'Version Control', icon: '/icons/Git.svg' },
+  { name: 'Predictive Modeling', icon: '/icons/MachineLearning.svg' },
+
+  // Folder 2 Additions
+  { name: 'Deep Learning', icon: '/icons/Tensorflow.svg' },
+  { name: 'AI Model Training', icon: '/icons/Pytorch.svg' },
+  { name: 'Web3 Authentication', icon: '/icons/Metamask.svg' },
+  { name: 'Blockchain Networks', icon: '/icons/ethereum.svg' },
+  { name: 'Smart Contracts', icon: '/icons/Solidity.svg' },
+
+  // Folder 3 Additions
+  { name: 'AI & Data Science', icon: '/icons/Python.svg' },
+  { name: 'User Research', icon: '/icons/UX.svg' },
+  { name: 'Visual Design', icon: '/icons/UI.svg' },
+  { name: 'Interactive Web', icon: '/icons/JavaScript.svg' },
+  { name: 'Web Semantics', icon: '/icons/Html.svg' },
+  { name: 'Component UI', icon: '/icons/React.svg' },
+  { name: 'Enterprise Backend', icon: '/icons/Java.svg' }
 ];
 
 const duplicatedStacks = [...techStacks, ...techStacks];
