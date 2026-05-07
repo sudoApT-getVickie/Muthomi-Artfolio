@@ -1,4 +1,3 @@
-import React from 'react';
 import './BentoHero.css'; // Links the custom CSS
 
 const techStacks = [
