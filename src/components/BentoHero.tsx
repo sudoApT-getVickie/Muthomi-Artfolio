@@ -110,7 +110,7 @@ export default function BentoHero() {
         {/* --- BOX 4: Profile Image --- */}
         <div className="bento-box profile-box">
           <img 
-            src="/images/profile.png" 
+            src="/images/profile.jpg" 
             alt="Bernard Victor Muthomi" 
             className="profile-img"
           />
