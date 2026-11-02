@@ -121,7 +121,9 @@ export default function BentoHero() {
         <div className="bento-box arch-box">
           <div>
             <h3 className="arch-title">SYSTEM ARCHITECTURE</h3>
-            <p className="arch-desc">Offline-first solutions and generative AI integration.</p>
+            <p className="arch-desc">Computer Engineer with hands-on experience in EHR systems, IAM administration, and digital platform management.
+Skilled in Python, React, and IoT with a strong focus on improving public service delivery through technology.
+</p>
           </div>
           <div className="arch-icon">✦</div>
         </div>
