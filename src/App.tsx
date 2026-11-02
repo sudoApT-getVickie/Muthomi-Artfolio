@@ -1,51 +1,41 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./App.css";
-import BentoHero from "./components/BentoHero";
+import { useState, useEffect, useRef } from 'react'
+import BentoHero from './components/BentoHero'
+import './App.css'
 
-interface FadeInSectionProps {
-  children: React.ReactNode;
-  delay?: number;
-}
-
-const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const domRef = useRef<HTMLDivElement>(null);
+// --- 1. Scroll Animation Wrapper ---
+function FadeInSection({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) {
+  const [isVisible, setVisible] = useState(false)
+  const domRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setVisible(true)
+          if (domRef.current) observer.unobserve(domRef.current)
         }
-      });
-    });
+      })
+    }, { threshold: 0.15 })
 
-    const currentRef = domRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
+    if (domRef.current) observer.observe(domRef.current)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div
-      ref={domRef}
-      className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
+      className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
       style={{ transitionDelay: `${delay}ms` }}
+      ref={domRef}
     >
       {children}
     </div>
-  );
-};
+  )
+}
 
 export default function App() {
   return (
     <div className="app-layout">
+      
       {/* High-Performance Bento Hero Section */}
       <BentoHero />
 
@@ -56,179 +46,133 @@ export default function App() {
         </FadeInSection>
 
         <div className="project-grid">
+          
           {/* 1. HerVoice.AI */}
           <FadeInSection delay={0}>
             <div className="project-card">
               <h3>HerVoice.AI</h3>
               <p>A digital companion architecture focused on women's safety and emotional wellbeing.</p>
               <div className="tech-stack">
-                <span>AI</span>
-                <span>Mobile</span>
-                <span>Architecture</span>
+                <span>AI</span><span>Mobile</span><span>Architecture</span>
               </div>
               <a
                 href="https://her-voice-psi.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="view-details"
+                className="project-link"
               >
-                View Details &rarr;
+                View Details →
               </a>
             </div>
           </FadeInSection>
 
           {/* 2. Dawa Mashinani */}
-          <FadeInSection delay={100}>
+          <FadeInSection delay={200}>
             <div className="project-card">
               <h3>Dawa Mashinani</h3>
               <p>An offline-first mobile ecosystem designed to streamline rural healthcare delivery.</p>
               <div className="tech-stack">
-                <span>Mobile</span>
-                <span>Offline-First</span>
-                <span>UX</span>
+                <span>Mobile</span><span>Offline-First</span><span>UX</span>
               </div>
-              <a
-                href="https://github.com/sudoApT-getVickie/Dawa-Mashinani"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
+              <a href="https://dawa-dashinani-infrastructure.vercel.app/" className="project-link" target="_blank" rel="noopener noreferrer">
+                View Details →
               </a>
             </div>
           </FadeInSection>
 
           {/* 3. Mountain Bridge Investment */}
-          <FadeInSection delay={200}>
+          <FadeInSection delay={400}>
             <div className="project-card">
               <h3>Mountain Bridge Investment</h3>
               <p>A high-performance, SEO-optimized web platform for a real estate investment firm.</p>
               <div className="tech-stack">
-                <span>Web Development</span>
-                <span>SEO</span>
-                <span>React</span>
+                <span>Web Development</span><span>SEO</span><span>React</span>
               </div>
-              <a
-                href="https://mountainbridgeinvestments.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
+              <a href="https://sudoapt-getvickie.github.io/mountain-bridge-site/" className="project-link" target="_blank" rel="noopener noreferrer">
+                View Details →
               </a>
             </div>
           </FadeInSection>
 
-          {/* 4. QejaYetu */}
-          <FadeInSection delay={300}>
-            <div className="project-card">
-              <h3>QejaYetu</h3>
-              <p>A spatial accommodation and discovery platform built for modern university students.</p>
-              <div className="tech-stack">
-                <span>Spatial UI</span>
-                <span>Maps API</span>
-                <span>Next.js</span>
-              </div>
-              <a
-                href="https://qejayetu.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
-              </a>
-            </div>
-          </FadeInSection>
-
-          {/* 5. Shamba Shape Up */}
-          <FadeInSection delay={400}>
-            <div className="project-card">
-              <h3>Shamba Shape Up</h3>
-              <p>An interactive agricultural advisory platform delivering actionable climate and crop insights.</p>
-              <div className="tech-stack">
-                <span>Agritech</span>
-                <span>SMS/USSD</span>
-                <span>API</span>
-              </div>
-              <a
-                href="https://github.com/sudoApT-getVickie"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
-              </a>
-            </div>
-          </FadeInSection>
-
-          {/* 6. Twiga Data Bridge */}
-          <FadeInSection delay={500}>
-            <div className="project-card">
-              <h3>Twiga Data Bridge</h3>
-              <p>A serverless POS analytics platform and progressive web app with Python ETL pipelines and an in-app LLM copilot.</p>
-              <div className="tech-stack">
-                <span>Python</span>
-                <span>AWS Lambda</span>
-                <span>Supabase</span>
-                <span>LLM Copilot</span>
-              </div>
-              <a
-                href="https://github.com/sudoApT-getVickie/Twiga-Data-Bridge"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
-              </a>
-            </div>
-          </FadeInSection>
-
-          {/* 7. Ikonex Student Management System */}
+          {/* 4. QejaYetu (New Addition) */}
           <FadeInSection delay={600}>
             <div className="project-card">
-              <h3>Ikonex SMS</h3>
-              <p>A full-stack institutional portal managing student records, academic streams, subjects, and grade reporting.</p>
+              <h3>QejaYetu</h3>
+              <p>A spatial accommodation platform integrating Google Maps for property discovery and Africa's Talking API for automated SMS communication.</p>
               <div className="tech-stack">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>Express</span>
-                <span>Tailwind CSS</span>
+                <span>Next.js</span><span>Google Maps API</span><span>Africa's Talking</span>
               </div>
-              <a
-                href="https://github.com/sudoApT-getVickie/ikonex-student-management-system"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
+              <a href="https://qeja-yetu.vercel.app/" className="project-link" target="_blank" rel="noopener noreferrer">
+                View Live Site →
               </a>
             </div>
           </FadeInSection>
 
-          {/* 8. Eleazar Barbershop */}
-          <FadeInSection delay={700}>
+          
+          {/* 4. Shamba Shape Up (New Addition) */}
+          <FadeInSection delay={800}>
             <div className="project-card">
-              <h3>Eleazar Barbershop</h3>
-              <p>An offline-first progressive web application for salon bookings with service worker caching and WhatsApp dispatch.</p>
+              <h3>Shamba Shape Up</h3>
+              <p>An digital platform connecting local farmers directly with commercial buyers to secure fair market prices for their produce.</p>
               <div className="tech-stack">
-                <span>PWA</span>
-                <span>Offline-First</span>
-                <span>JavaScript</span>
-                <span>Service Workers</span>
+                <span>Type</span><span>Google Maps API</span><span>Africa's Talking</span>
               </div>
-              <a
-                href="https://github.com/sudoApT-getVickie/ELEAZAR-BARBERSHOP"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="view-details"
-              >
-                View Details &rarr;
+              <a href="https://sudoapt-getvickie.github.io/Shamba-Shape-UP-/" className="project-link" target="_blank" rel="noopener noreferrer">
+                View Live Site →
               </a>
+            </div>
+          </FadeInSection>
+
+        </div>
+      </section>
+
+      
+      {/* Expertise & Skills Section */}
+      <section id="skills" className="content-section">
+        <FadeInSection>
+          <h2>Expertise & Skills</h2>
+        </FadeInSection>
+
+        <div className="skills-grid">
+          <FadeInSection delay={0}>
+            <div className="skill-category">
+              <h3>Frontend & Design</h3>
+              <div className="skill-tags">
+                <span>React</span><span>JavaScript (ES6+)</span><span>HTML / CSS</span><span>Adobe Illustrator</span><span>UI/UX</span>
+              </div>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection delay={150}>
+            <div className="skill-category">
+              <h3>Backend & Mobile</h3>
+              <div className="skill-tags">
+                <span>Python</span><span>Java</span><span>C</span><span>MySQL</span><span>Android Studio</span><span>Solidity</span>
+              </div>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection delay={300}>
+            <div className="skill-category">
+              <h3>AI & Data</h3>
+              <div className="skill-tags">
+                <span>PyTorch</span><span>Machine Learning</span><span>Big Data Infrastructure</span>
+              </div>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection delay={450}>
+            <div className="skill-category">
+              <h3>Networking & Infrastructure</h3>
+              <div className="skill-tags">
+                <span>Network Configuration</span><span>Wireshark</span><span>TCP / HTTP Protocols</span><span>Cybersecurity</span><span>IoT</span>
+              </div>
             </div>
           </FadeInSection>
         </div>
       </section>
-  {/* Contact Section */}
+
+      {/* Contact Section */}
       <section id="contact" className="content-section contact-section">
         <FadeInSection>
           <div className="contact-container">
