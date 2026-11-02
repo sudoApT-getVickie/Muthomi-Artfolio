@@ -228,11 +228,41 @@ export default function App() {
           </FadeInSection>
         </div>
       </section>
+  {/* Contact Section */}
+      <section id="contact" className="content-section contact-section">
+        <FadeInSection>
+          <div className="contact-container">
+            <h2 className="contact-title">Let's Build Something Extraordinary.</h2>
+            <p className="contact-text">
+              Passionate about crafting intuitive user experiences and continuously learning emerging technologies.
+              Open to new opportunities in software development, AI, and network configuration. Whether you have a project in mind, a role to fill, or just want to connect, my inbox is always open.
+            </p>
+            
+            {/* --- UPDATED: CTA Button Group --- */}
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+              <a href="mailto:muthomibernardvictor@gmail.com" className="cta-button big-cta">
+                Say Hello
+              </a>
+              {/* Ensure your file is named exactly Bernard-Muthomi-Resume.pdf in the public folder */}
+              <a href="/Bernard-Muthomi-Resume.pdf" target="_blank" rel="noopener noreferrer" className="cta-button big-cta" style={{ backgroundColor: 'transparent', border: '2px solid #CA2851', color: '#FFE3B3' }}>
+                View Resume
+              </a>
+            </div>
 
-      {/* Footer / Contact */}
-      <footer className="portfolio-footer">
-        <p>&copy; {new Date().getFullYear()} Bernard Victor Muthomi. All rights reserved.</p>
-      </footer>
+            <div className="social-links" style={{ marginTop: '3rem' }}>
+              <a href="mailto:muthomibernardvictor@gmail.com">Email</a>
+              <a href="tel:+254710247959">Phone</a>
+              <a href="https://www.linkedin.com/in/bernard-victor-muthomi" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/sudoApT-getVickie" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+        </FadeInSection>
+
+        <footer className="site-footer">
+          <p>Designed & Built by Victor Muthomi &copy; {new Date().getFullYear()}</p>
+        </footer>
+      </section>
+
     </div>
-  );
+  )
 }
